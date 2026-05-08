@@ -6,7 +6,10 @@ public final class Cutsiecreepers extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        // Plugin startup logic
+
+        saveResource("config.yml", true);
+        saveDefaultConfig();
+
     }
 
     @Override
