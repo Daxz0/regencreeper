@@ -7,6 +7,7 @@ import org.bukkit.block.data.BlockData;
 public class BlockRecovery {
 
     public static void updateBlock(Block block, BlockData data) {
+        BlockData blockData = (BlockData) data.isSupported();
         block.setBlockData(data);
         Particle.HEART.builder()
                 .location(block.getLocation())

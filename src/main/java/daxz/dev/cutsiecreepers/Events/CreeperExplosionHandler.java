@@ -14,6 +14,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityExplodeEvent;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -30,7 +31,7 @@ public class CreeperExplosionHandler implements Listener {
         World world = location.getWorld();
         List<Block> blocks = event.blockList();
 
-        Map<Block, BlockData> save = new HashMap<>();
+        Map<Block, BlockData> save = new LinkedHashMap<>();
         for (Block block : blocks) {
             save.put(block, block.getBlockData().clone());
         }
@@ -40,7 +41,7 @@ public class CreeperExplosionHandler implements Listener {
             slowCount++;
             Bukkit.getScheduler().runTaskLater(Cutsiecreepers.getInstance(), () -> {
                 BlockRecovery.updateBlock(entry.getKey(), entry.getValue());
-            }, 2+slowCount* 4L);
+            }, 2+slowCount* 20L);
         }
 
 
