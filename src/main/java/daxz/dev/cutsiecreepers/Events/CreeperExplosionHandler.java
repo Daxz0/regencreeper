@@ -1,8 +1,10 @@
 package daxz.dev.cutsiecreepers.Events;
 
 import com.destroystokyo.paper.event.entity.CreeperIgniteEvent;
+import daxz.dev.cutsiecreepers.Config.ExplosionConfiguration;
 import daxz.dev.cutsiecreepers.Cutsiecreepers;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Creeper;
 import org.bukkit.entity.Entity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -16,13 +18,10 @@ public class CreeperExplosionHandler implements Listener {
     public void onExplosion(EntityExplodeEvent event){
 
         Entity entity = event.getEntity();
-        if (!entity.getName().equals("Creeper")){ return; }
+        if (!(entity instanceof Creeper)) return;}
 
         List<Block> destroyedBlocks = event.blockList();
 
-        if (Cutsiecreepers.getInstance().getConfig().getBoolean("CreeperExplosions")) {
-            System.out.println("what");
-        }
 
 
     }
