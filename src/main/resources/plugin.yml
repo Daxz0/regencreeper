@@ -1,0 +1,7 @@
+name: cutsiecreepers
+version: '${version}'
+
+main: daxz.dev.cutsiecreepers.Cutsiecreepers
+bootstrapper: daxz.dev.cutsiecreepers.CutsiecreepersBootstrap
+api-version: '26.1.2'
+load: POSTWORLD
