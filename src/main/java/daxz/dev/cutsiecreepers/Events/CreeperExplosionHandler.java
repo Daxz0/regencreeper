@@ -29,6 +29,7 @@ public class CreeperExplosionHandler implements Listener {
     @EventHandler(priority = EventPriority.HIGH)
     public void onExplosion(EntityExplodeEvent event){
 
+        event.setYield(0);
 
         Entity entity = event.getEntity();
         if (!(entity instanceof Creeper)) return;
@@ -54,7 +55,7 @@ public class CreeperExplosionHandler implements Listener {
             int finalSlowCount = slowCount;
             Bukkit.getScheduler().runTaskLater(Cutsiecreepers.getInstance(), () -> {
                 BlockRecovery.updateBlock(entry.getKey(), entry.getValue(), finalSlowCount, maxCount, entity.getUniqueId());
-            }, 2+slowCount* 20L);
+            }, 2+slowCount* 5L);
         }
 
 

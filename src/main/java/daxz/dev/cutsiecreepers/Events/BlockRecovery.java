@@ -10,13 +10,14 @@ public class BlockRecovery {
 
     public static void updateBlock(Block block, BlockData data, int slowCount, int maxCount, UUID uuid) {
 
-        if (slowCount > maxCount) {
+        if (slowCount >= maxCount-1) {
             CreeperExplosionHandler.clearRestoringBlock(uuid);
+            System.out.println("protection removed");
         }
 
         block.setBlockData(data);
         Particle.HEART.builder()
-                .location(block.getLocation())
+                .location(block.getLocation().add(0,1,0))
                 .offset(0.5,0.5,0.5)
                 .count(3)
                 .spawn()
