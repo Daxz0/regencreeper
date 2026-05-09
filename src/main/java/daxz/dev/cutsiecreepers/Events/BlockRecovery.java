@@ -12,7 +12,6 @@ public class BlockRecovery {
 
         if (slowCount >= maxCount-1) {
             CreeperExplosionHandler.clearRestoringBlock(uuid);
-            System.out.println("protection removed");
         }
 
         block.setBlockData(data);

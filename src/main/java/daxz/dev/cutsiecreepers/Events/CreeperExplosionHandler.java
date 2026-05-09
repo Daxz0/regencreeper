@@ -16,7 +16,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
-
+import org.bukkit.util.Vector;
 import java.util.*;
 
 public class CreeperExplosionHandler implements Listener {
@@ -37,6 +37,17 @@ public class CreeperExplosionHandler implements Listener {
         Location location = entity.getLocation();
         World world = location.getWorld();
         List<Block> blocks = event.blockList();
+
+
+        List<Entity> entities = (List<Entity>) world.getNearbyEntities(location, 3,4,3);
+
+        for (Entity ent : entities) {
+
+            ent.setVelocity(new Vector(0, 0.5, 0));
+
+
+        }
+
 
         restoringBlocks.put(entity.getUniqueId(), blocks.stream().map(Block::getLocation).toList());
 
