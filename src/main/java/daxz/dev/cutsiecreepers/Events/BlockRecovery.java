@@ -4,10 +4,16 @@ import org.bukkit.Particle;
 import org.bukkit.block.Block;
 import org.bukkit.block.data.BlockData;
 
+import java.util.UUID;
+
 public class BlockRecovery {
 
-    public static void updateBlock(Block block, BlockData data) {
-        BlockData blockData = (BlockData) data.isSupported();
+    public static void updateBlock(Block block, BlockData data, int slowCount, int maxCount, UUID uuid) {
+
+        if (slowCount > maxCount) {
+            CreeperExplosionHandler.clearRestoringBlock(uuid);
+        }
+
         block.setBlockData(data);
         Particle.HEART.builder()
                 .location(block.getLocation())
